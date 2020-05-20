@@ -1,0 +1,127 @@
+import types
+
+Class Zillion:
+ def__init__(self, digits):
+  self.list = []
+  a = False
+  for element in digits:
+      if element.isdigit():
+          self.list = self.list + [int(element)]
+          a = True
+      elif element == ",":
+          continue
+      elif element == " ":
+          continue
+      else:
+          raise RuntimeError
+   if a = False:
+       raise RuntimeError
+
+ def increment(self):
+     while len(self.list) >= 0:
+         count = len(self.list)-1
+         if self.list[count] = 9:
+             self.list[count] = 0
+         elif self.list[count] is not 9:
+             self.list[count]+=1
+             break
+        count -=1
+    if count = -1:
+        self.list = [1] + self.list
+        #self.list.insert(0, 1)
+
+ def isZero(self):
+     counter = 0
+     for element in self.list:
+         if element = 0:
+             counter += 1
+         if counter == len(self.list):
+             return True
+     return False
+
+ def toString(self):
+     stri = ""
+     for element in self.list:
+         stri += str(element)
+     return stri
+
+try:
+  z = Zillion('')
+except RuntimeError:
+  print('Empty string')
+
+# It must print 'Empty string' without apostrophes. 2 points.
+
+try:
+  z = Zillion(' , ')
+except RuntimeError:
+  print('No digits in the string')
+
+# It must print 'No digits in the string' without apostrophes. 2 points.
+
+try:
+  z = Zillion('1+0')
+except RuntimeError:
+  print('Non-digit in the string')
+
+# It must print 'Non-digit in the string' without apostrophes. 2 points.
+
+try:
+  z = Zillion('0')
+except RuntimeError:
+  print('This must not be printed')
+
+#  It must print nothing. 2 points.
+
+print(z.isZero())    #  It must print True. 2 points.
+
+try:
+  z = Zillion('000000000')
+except RuntimeError:
+  print('This must not be printed')
+
+#  It must print nothing. 2 points.
+
+print(z.isZero())    #  It must print True. 2 points.
+
+try:
+  z = Zillion('000 000 000')
+except RuntimeError:
+  print('This must not be printed')
+
+#  It must print nothing. 2 points.
+
+print(z.isZero())    #  It must print True. 2 points.
+
+try:
+  z = Zillion('997')
+except RuntimeError:
+  print('This must not be printed')
+
+#  It must print nothing.  2 points.
+
+print(z.isZero())    #  It must print False. 2 points.
+
+print(z.toString())  #  It must print 997. 2 points.
+
+z.increment()
+
+print(z.toString())  #  It must print 998. 2 points.
+
+z.increment()
+
+print(z.toString())  #  It must print 999. 2 points.
+
+z.increment()
+
+print(z.toString())  #  It must print 1000. 2 points.
+
+try:
+  z = Zillion('0 9,9 9')
+except:
+  print('This must not be printed')
+
+#  It must print nothing.  3 points.
+
+z.increment()
+print(z.toString())  #  It must print 1000. 2 points.
